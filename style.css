@@ -1,0 +1,58 @@
+ *{
+    margin: 0;
+    padding: 0;
+ }
+
+ .container{
+    height: 100vh;
+    width: 100vw;
+    background-color: wheat;
+    display: grid;
+
+    grid-template-rows: minmax(50px,20vh) 1fr;
+    gap: 10px;
+    
+ }
+
+ .header,.deck{
+    background-color: whitesmoke;
+ }
+
+ .header{
+    background-color: honeydew;
+    display: grid;
+    grid-auto-flow: column;
+ }
+
+
+
+ .form-container{
+    position:fixed;
+    right: 10px;
+    top: 200px;
+ }
+
+ .deck{
+    display: grid;
+    grid-auto-flow: column;
+ }
+
+ .card{
+    height: 10rem;
+    width: 8rem;
+    padding: 10px;
+    background-color: yellow;
+    display: flex;
+    flex-direction: column  ;
+    justify-content: center;
+    align-items: center;
+
+ }
+
+ .card .remove-button{
+    background-color: red;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+
+ }
