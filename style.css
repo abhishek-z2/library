@@ -1,9 +1,39 @@
  *{
     margin: 0;
     padding: 0;
+    --header-color: #98b0ff;
+    --deck-background: #b4cdff;
+    --card-background: #ffc0a9;
+    --add-button-border:#ffc6b1;
+    --add-button-background:#a2b7fa;
+    --card-border:#ff865a;
+
  }
 
+ @font-face {
+    font-family: 'Logo-header';
+    src: url(fonts/agane_75_extra_bold-webfont.woff) format('woff'),
+        url(fonts/agane_75_extra_bold-webfont.woff2) format('woff2');
+    font-weight: bolder;
+ }
+
+ @font-face {
+    font-family: 'Book-title';
+    src: url(fonts/agane_65_bold-webfont.woff) format('woff'),
+        url(fonts/agane_65_bold-webfont.woff2) format('woff2');
+        font-weight: bold;
+ }
+
+ @font-face {
+    font-family: 'book-description';
+    src: url(fonts/agane_45_light-webfont.woff) format('woff'),
+        url(fonts/agane_45_light-webfont.woff2) format('woff2');
+    font-weight: normal;
+ }
+
+
  .container{
+    position: relative;
     height: 100vh;
     width: 100vw;
     background-color: wheat;
@@ -19,40 +49,202 @@
  }
 
  .header{
-    background-color: honeydew;
+    background-color: var(--header-color);
     display: grid;
     grid-auto-flow: column;
+    font-family: 'Logo-header';
+    font-size: 3rem;
+    /* justify-content: center; */
+    align-content: center;
+    padding: 4rem;
+
  }
 
 
 
- .form-container{
-    position:fixed;
-    right: 10px;
-    top: 200px;
- }
+.header .logo{
+    justify-self: start;
+    padding: 4rem;
+    
+}
+
+
+.header .new-book{
+    justify-self: end;
+    align-self: center;
+    font-size: 1.1rem;
+    padding: 1rem .5rem 1rem .5rem;
+    font-family: 'Logo-header';
+    border: 2px dashed var(--add-button-border);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 1rem;
+    background-color: var(--add-button-background);
+
+
+}
+
+
+ 
+
+.new-book .add-book-button{
+    font-size: 3rem;
+    transform: rotate(90deg);
+    transition: 200ms;
+}
+
+.add-book-button:hover{
+    transform: rotate(180deg);
+    transition: 500ms;
+}
+.add-book-button{
+    transition: 200ms;
+}
+.new-book:hover{
+    transform: scale(1.01);
+    transition: 300ms;
+    cursor:pointer ;
+}
+
 
  .deck{
     display: grid;
-    grid-auto-flow: column;
+    grid-template-columns: repeat(4,1fr);
+    gap: 3rem;
+    background-color: var(--deck-background);
+    justify-content: center;
+    padding: 5%;
+    overflow: scroll;
  }
 
  .card{
-    height: 10rem;
-    width: 8rem;
+    height: 12rem;
+    width: 10rem;
     padding: 10px;
-    background-color: yellow;
-    display: flex;
-    flex-direction: column  ;
-    justify-content: center;
-    align-items: center;
+    background-color: var(--card-background);
+   display: grid;
+   grid-template-rows: repeat(5,1fr);
+   justify-content: center;
+   justify-items: center;
+   align-items: center;
+   align-content: center;
+    border-radius: 20px;
 
  }
 
+ .card:hover{
+    border-left: 3px solid var(--card-border) ;
+    border-bottom: 2px solid var(--card-border);
+    transition: 200ms;
+
+ }
+
+.card>h3{
+    padding-top: 2%;
+    margin: 0;
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+}
+
+.card>p:nth-child(-n+2){
+    font-style: italic;
+}
+.read-status-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .2rem 1rem;
+    gap: 1rem;
+}
+
+.card h3{
+    font-family: 'Book-title';
+}
+.card p{
+    font-family: 'book-description';
+}
  .card .remove-button{
     background-color: red;
     color: white;
-    border-radius: 10px;
+    width: 5rem;
+    padding: 2%;
+    border-radius: 5px;
+    border: none;
     cursor: pointer;
+    margin-bottom: ;
 
+ }
+
+#book-dialog{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-items: center ;
+    /* align-content: center; */
+    justify-items: center;
+    background-image: linear-gradient(yellow,green,white);
+}
+
+ 
+
+#book-dialog form{
+    width: 16rem;
+    height: 20rem;
+    font-family: 'Book-title';
+    display: grid;
+    justify-content: space-evenly;
+    align-items: center;
+    justify-items: center;
+    background-color: var(--add-button-border);
+    border-radius: 10px;
+    align-items: center;
+}
+
+form>*{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+form input{
+    border: none;
+    background-color: rgb(255, 241, 236);
+    border-radius: 4px;
+}
+
+form .read-status-div{
+    display: flex;
+    flex-direction: row;
+}
+
+#close-dialog{
+    background-color: red;
+    color: white;
+    width: 5rem;
+    padding: 2%;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    /* margin-bottom: ; */
+    text-align: center;
+}
+
+#confirm-button{
+    background-color: rgb(33, 202, 20);
+    color: white;
+    width: 8rem;
+    padding: 2%;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin-bottom: ;
+    text-align: center;
+}
+
+ ::backdrop{
+    filter: blur(100px);
  }

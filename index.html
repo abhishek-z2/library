@@ -7,32 +7,32 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <dialog id="book-dialog">
+        <form action="" method="dialog">
+            <div class="details">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title">
+            </div>
+            <div class="details">
+                <label for="author">Author</label>
+                <input type="text" name="author" id="author">
+            </div>  
+            <div class="details">
+                <label for="pages">Pages read</label>
+                <input type="number" name="pages" id="pages">
+            </div>
+            <div class="details read-status-div">
+                <label for="read-status">Read</label>
+                <input type="checkbox" name="read-status" id="read-status">
+            </div>
+            <button id="confirm-button">Add to Library</button>
+            <button id="close-dialog">X</button>
+        </form>
+    </dialog>
     <div class="container">
         <div class="header">
             <div class="logo">Library</div>
             <div class="new-book">Add a book <span class="add-book-button">+</span></div>
-            <dialog id="book-dialog">
-                <form action="" method="dialog">
-                    <div class="details">
-                        <label for="title">Title</label>
-                        <input type="text" name="title" id="title">
-                    </div>
-                    <div class="details">
-                        <label for="author">Author</label>
-                        <input type="text" name="author" id="author">
-                    </div>  
-                    <div class="details">
-                        <label for="pages">Pages read</label>
-                        <input type="number" name="pages" id="pages">
-                    </div>
-                    <div class="details">
-                        <label for="author">Read</label>
-                        <input type="checkbox" name="read-status" id="read-status">
-                    </div>
-                    <button id="confirm-button">Add to Library</button>
-                </form>
-                <button id="close-dialog">X</button>
-            </dialog>
         </div>
         <div class="deck">
             

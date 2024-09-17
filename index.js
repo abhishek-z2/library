@@ -29,8 +29,15 @@ function addToDeck(){
         author.textContent=currentBook.author
         const pagesRead = document.createElement('p')
         pagesRead.textContent=currentBook.pages
+        const readStatusDiv = document.createElement('div')
         const readStatus= document.createElement('p')
         readStatus.textContent=currentBook.readStatus?'read':'not read'
+        const checkbox = document.createElement('input')
+        checkbox.type='checkbox'
+        checkbox.id='check-box'
+        checkbox.checked=currentBook.readStatus
+        readStatusDiv.classList.add('read-status-div')
+        readStatusDiv.append(readStatus,checkbox)
         console.log(currentBook.readStatus)
         const removeCardButton = document.createElement('button')
         removeCardButton.textContent='remove'
@@ -42,8 +49,9 @@ function addToDeck(){
             addToDeck()
         })
 
-        card.append(title,author,pagesRead,readStatus,removeCardButton)
+        card.append(title,author,pagesRead,readStatusDiv,removeCardButton)
         deck.appendChild(card)
+        bookDialog.close()
     })
 
 
