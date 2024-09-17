@@ -68,5 +68,18 @@ addToLibButton.addEventListener('click',(event)=>{
 
 // const removefromLibButton = document.querySelector('.remove-button')
 
+const addButton = document.querySelector('.new-book')
+const bookDialog = document.querySelector('#book-dialog')
+const closeButton = document.querySelector('#close-dialog')
+addButton.addEventListener('click',()=>{
+    bookDialog.showModal()
+
+})
+
+
+closeButton.addEventListener('click',()=>{
+    bookDialog.close()
+})
+
 
 
