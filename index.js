@@ -37,7 +37,7 @@ function addToDeck(){
         const author = document.createElement('p')
         author.textContent=currentBook.author
         const pagesRead = document.createElement('p')
-        pagesRead.textContent=currentBook.pages
+        pagesRead.textContent=`${currentBook.pages} pages read`
         const readStatusDiv = document.createElement('div')
         const readStatus= document.createElement('p')
         readStatus.textContent=currentBook.readStatus?'read':'not read'
@@ -85,14 +85,41 @@ const addToLibButton = document.querySelector('#confirm-button')
 addToLibButton.addEventListener('click',(event)=>{
     const title = document.querySelector('#title').value 
     const author = document.querySelector('#author').value
+    const titleField = document.querySelector('#title') 
+
+    const pages=document.querySelector('#pages')
     const pagesRead = document.querySelector('#pages').value
     const readStatus = document.querySelector('#read-status').checked
+    
+    let status = true
+    if(titleField.validity.valueMissing){
+        document.querySelector('.title-error').textContent='enter the book title '
+        document.querySelector('.title-error').classList.replace('valid','invalid')
+        status=false
+    }
+    if(pages.validity.rangeOverflow){
+        document.querySelector('.page-error').textContent='enter a realistic amount'
+        status = false
+        document.querySelector('.page-error').classList.replace('valid','invalid')
 
-    addBook(title,author,pagesRead,readStatus)
-    console.log(books)
-    addToDeck()
 
+    }
+
+    if(pages.validity.valueMissing){
+        document.querySelector('.page-error').textContent='please enter a value'
+        document.querySelector('.page-error').classList.replace('valid','invalid')
+        status = false
+    }
+
+    if(status){
+        addBook(title,author,pagesRead,readStatus)
+        console.log(books)
+        addToDeck()
+        dialogReset()
+    }
+        
     // console.log(title)
+    
     event.preventDefault()
 })
 
@@ -107,6 +134,17 @@ addButton.addEventListener('click',()=>{
 
 })
 
+function dialogReset(){
+    document.querySelector('#title').value=''
+    const invalidFields = document.querySelectorAll('.invalid')
+    invalidFields.forEach(field=>{
+        field.textContent=''
+        field.classList.replace('invalid','valid')
+    })
+    document.querySelector('#author').value=''
+    document.querySelector('#pages').value=''
+    document.querySelector('#read-status').checked=false
+} 
 
 closeButton.addEventListener('click',()=>{
     bookDialog.close()
